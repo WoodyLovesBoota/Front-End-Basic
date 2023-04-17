@@ -1,3 +1,8 @@
 body {
   text-align: center;
 }
+
+#calendar-table {
+  width: 500px;
+  height: 400px;
+}
