@@ -22,3 +22,9 @@ let totalRow = Math.ceil((firstDay + getDateOfMonth(nowYear, nowMonth)) / 7);
 console.log(totalRow);
 
 console.log(dateArr);
+
+let calendarBodyTable = document.querySelector("#calendar-table-body");
+let firstRow = calendarBodyTable.insertRow();
+for (let i = 0; i < firstDay; i++) {
+  firstRow.insertCell();
+}
