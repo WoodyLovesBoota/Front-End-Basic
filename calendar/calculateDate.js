@@ -1,6 +1,7 @@
 let now = new Date();
 let nowYear = now.getFullYear();
 let nowMonth = now.getMonth() + 1;
+let today = [now.getFullYear(), now.getMonth() + 1, now.getDate()];
 
 let calendarTable = document.getElementById("calendar-table");
 let calendarBodyTable = document.querySelector("#calendar-table-body");
@@ -31,8 +32,9 @@ const drawCalendar = () => {
     let nowCols = firstRow.insertCell();
     nowCols.innerText = i;
     nowCols.onclick = () => {
-      cursorOn(nowCols);
+      clicked(nowCols);
     };
+    if ([nowYear, nowMonth, i] === today) nowCols.classList.add("today");
   }
 
   for (let i = 1; i < totalRow; i++) {
@@ -42,8 +44,12 @@ const drawCalendar = () => {
       nowCols.innerText = past + 1;
       past++;
       nowCols.onclick = () => {
-        cursorOn(nowCols);
+        clicked(nowCols);
       };
+
+      if (nowYear === today[0] && nowMonth === today[1] && past === today[2])
+        nowCols.classList.add("today");
+
       if (past >= getDateOfMonth(nowYear, nowMonth)) break;
     }
   }
@@ -71,7 +77,7 @@ const next = () => {
   drawCalendar();
 };
 
-const cursorOn = (cell) => {
+const clicked = (cell) => {
   console.log();
   if (document.getElementsByClassName("choiced")[0])
     document.getElementsByClassName("choiced")[0].classList.remove("choiced");
