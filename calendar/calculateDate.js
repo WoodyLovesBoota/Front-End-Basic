@@ -30,9 +30,11 @@ const drawCalendar = () => {
 
   for (let i = 1; i <= 7 - firstDay; i++) {
     let nowCols = firstRow.insertCell();
-    nowCols.innerText = i;
+    let nowText = document.createElement("p");
+    nowText.innerHTML = i;
+    nowCols.appendChild(nowText);
     nowCols.onclick = () => {
-      clicked(nowCols);
+      clicked(nowText);
     };
     if ([nowYear, nowMonth, i] === today) nowCols.classList.add("today");
   }
@@ -41,10 +43,12 @@ const drawCalendar = () => {
     let nowRow = calendarBodyTable.insertRow();
     for (let j = 0; j < 7; j++) {
       let nowCols = nowRow.insertCell();
-      nowCols.innerText = past + 1;
+      let nowText = document.createElement("p");
+      nowText.innerHTML = past + 1;
+      nowCols.appendChild(nowText);
       past++;
       nowCols.onclick = () => {
-        clicked(nowCols);
+        clicked(nowText);
       };
 
       if (nowYear === today[0] && nowMonth === today[1] && past === today[2])
@@ -78,7 +82,6 @@ const next = () => {
 };
 
 const clicked = (cell) => {
-  console.log();
   if (document.getElementsByClassName("choiced")[0])
     document.getElementsByClassName("choiced")[0].classList.remove("choiced");
   cell.classList.add("choiced");
