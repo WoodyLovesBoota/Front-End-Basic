@@ -2,18 +2,19 @@ body {
   text-align: center;
   cursor: pointer;
 }
-thead {
-}
+
 #calendar-table {
   width: 560px;
   height: 400px;
 }
 
 td {
-  width: 80px;
+  width: 50px;
+  height: 50px;
 }
 
-#days {
+div {
+  margin: 0 auto;
 }
 
 .choiced {
@@ -21,14 +22,13 @@ td {
   font-weight: bold;
 }
 
-.today {
-}
-
 .today > p {
   color: white;
   font-weight: bold;
-
   background-color: rgb(6, 78, 6);
+  border-radius: 50%;
+}
 
-  border-radius: 30%;
+tbody > tr > td > p {
+  line-height: 45px;
 }
