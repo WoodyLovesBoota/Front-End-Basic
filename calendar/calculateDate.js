@@ -30,6 +30,9 @@ const drawCalendar = () => {
   for (let i = 1; i <= 7 - firstDay; i++) {
     let nowCols = firstRow.insertCell();
     nowCols.innerText = i;
+    nowCols.onclick = () => {
+      cursorOn(nowCols);
+    };
   }
 
   for (let i = 1; i < totalRow; i++) {
@@ -38,6 +41,9 @@ const drawCalendar = () => {
       let nowCols = nowRow.insertCell();
       nowCols.innerText = past + 1;
       past++;
+      nowCols.onclick = () => {
+        cursorOn(nowCols);
+      };
       if (past >= getDateOfMonth(nowYear, nowMonth)) break;
     }
   }
@@ -63,4 +69,11 @@ const next = () => {
     nowMonth = 1;
   }
   drawCalendar();
+};
+
+const cursorOn = (cell) => {
+  console.log();
+  if (document.getElementsByClassName("choiced")[0])
+    document.getElementsByClassName("choiced")[0].classList.remove("choiced");
+  cell.classList.add("choiced");
 };
